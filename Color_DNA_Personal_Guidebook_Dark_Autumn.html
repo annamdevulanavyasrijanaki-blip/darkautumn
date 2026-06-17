@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Color DNA Guidebook - Dark Autumn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #f5f4f0;
+      color: #1c1917;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+      padding: 20px 10px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      min-height: calc(100vh - 40px);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: #ffffff;
+      box-shadow: 0 12px 40px rgba(28,25,23,0.08);
+      border-radius: 20px;
+      border: 1px solid #e5e0da;
+      overflow: hidden;
+    }
+    header {
+      padding: 30px 24px;
+      border-bottom: 2px solid #eae5df;
+      text-align: center;
+      background-color: #faf9f6;
+    }
+    .header-tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: #b45309;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+    }
+    .header-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #1c1917;
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+    .book {
+      flex: 1;
+      position: relative;
+    }
+    .page {
+      display: none;
+      padding: 40px 30px;
+      animation: fadeIn 0.4s ease-out forwards;
+    }
+    .page.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* COVER PAGE STYLE */
+    .cover-page {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 220px);
+      padding: 20px;
+    }
+    .cover-seal {
+      width: 140px;
+      height: 140px;
+      border: 2px solid #d4af37;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 40px 0;
+      position: relative;
+      background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%);
+    }
+    .cover-seal::after {
+      content: '';
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 1px dashed rgba(212,175,55,0.25);
+      border-radius: 50%;
+      animation: rotate 25s linear infinite;
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .cover-season {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #b45309;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .cover-sub {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      color: #78716c;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+    }
+    .cover-desc {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: #57534e;
+      font-size: 15px;
+      margin-top: 24px;
+      max-width: 320px;
+    }
+    /* SECTION HEADER */
+    .section-header {
+      margin-bottom: 28px;
+      border-bottom: 2px solid #eae5df;
+      padding-bottom: 12px;
+    }
+    .section-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      color: #b45309;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      display: block;
+      font-weight: 700;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #1c1917;
+      margin-top: 2px;
+    }
+    /* CARD ELEMENTS */
+    .luxury-card {
+      background: #faf9f6;
+      border: 1px solid #e5e0da;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .card-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: #78716c;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .card-value {
+      font-size: 16px;
+      color: #1c1917;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+    }
+    /* PROGRESS BAR */
+    .progress-bar-container {
+      margin: 16px 0;
+    }
+    .progress-track {
+      background: #ece8e1;
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+    .progress-fill {
+      background: linear-gradient(90deg, #d4af37, #f59e0b);
+      height: 100%;
+      border-radius: 4px;
+    }
+    /* GRIDS & HORIZONTAL COLOR CARDS */
+    .color-grid {
+      display: grid;
+      grid-template-cols: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .color-card {
+      background: #faf9f6;
+      border: 1px solid #e5e0da;
+      padding: 10px 12px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-align: left;
+    }
+    .color-card.avoid {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 12px;
+    }
+    .color-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.08);
+      flex-shrink: 0;
+    }
+    .color-info {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .color-name {
+      font-size: 10px;
+      font-weight: 750;
+      text-transform: uppercase;
+      color: #1c1917;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .color-hex {
+      font-size: 8px;
+      font-family: monospace;
+      color: #78716c;
+    }
+    .color-reason {
+      font-size: 8px;
+      color: #991b1b;
+      font-style: italic;
+      line-height: 1.25;
+      margin-top: 6px;
+      width: 100%;
+    }
+    .text-red {
+      color: #b91c1c !important;
+    }
+    /* STYLE CARDS */
+    .styles-grid-container {
+      display: grid;
+      grid-template-cols: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .styles-column {
+      background: #faf9f6;
+      border: 1px solid #e5e0da;
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .column-header {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #b45309;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 0.1em;
+      border-bottom: 1px dashed #cbd1c5;
+      padding-bottom: 6px;
+    }
+    .styles-grid {
+      display: grid;
+      grid-template-cols: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .style-card {
+      background: #ffffff;
+      border: 1px solid #e5e0da;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .style-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .style-info {
+      padding: 8px 10px;
+    }
+    .style-category {
+      font-size: 7px;
+      font-family: 'Space Grotesk', sans-serif;
+      text-transform: uppercase;
+      color: #78716c;
+      letter-spacing: 0.1em;
+    }
+    .style-title {
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #1c1917;
+      margin-top: 1px;
+      line-height: 1.2;
+    }
+    /* JEWELRY & HAIR */
+    .metals-flex {
+      display: grid;
+      grid-template-cols: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .metal-swatch-container {
+      text-align: center;
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid #e5e0da;
+    }
+    .metal-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin: 0 auto 8px;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .metal-name {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #1c1917;
+    }
+    .metal-status {
+      font-size: 7.5px;
+      color: #b45309;
+      text-transform: uppercase;
+      margin-top: 2px;
+      font-weight: 850;
+    }
+    .hair-grid {
+      display: grid;
+      grid-template-cols: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+    }
+    .hair-swatch-container {
+      background: #ffffff;
+      border: 1px solid #e5e0da;
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+    }
+    .hair-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin: 0 auto 8px;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .hair-name {
+      font-size: 9px;
+      font-weight: 700;
+      color: #1c1917;
+    }
+    .hair-hex {
+      font-size: 8px;
+      font-family: monospace;
+      color: #78716c;
+    }
+    /* MAKEUP */
+    .makeup-row {
+      display: grid;
+      grid-template-cols: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .makeup-column {
+      background: #faf9f6;
+      border: 1px solid #e5e0da;
+      padding: 16px;
+      border-radius: 16px;
+    }
+    .makeup-grid {
+      display: grid;
+      grid-template-cols: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .makeup-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid #e5e0da;
+      padding: 10px;
+      border-radius: 12px;
+    }
+    .makeup-swatch {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      margin-bottom: 6px;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .makeup-name {
+      font-size: 8px;
+      font-weight: 700;
+      color: #1c1917;
+      text-align: center;
+      line-height: 1.1;
+    }
+    .foundation-label {
+      font-size: 12px;
+      color: #1c1917;
+      font-weight: 600;
+      text-align: center;
+      background: #faf9f6;
+      border: 1px solid #e5e0da;
+      border-radius: 14px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    /* DIRECTIVE */
+    .directive-card {
+      background: #fafaf9;
+      border: 1.5px solid rgba(212, 175, 55, 0.25);
+      border-radius: 20px;
+      padding: 24px;
+      margin-top: 16px;
+    }
+    .directive-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-align: center;
+      color: #1c1917;
+      font-style: italic;
+    }
+    /* CONTROLS */
+    .controls {
+      padding: 24px;
+      border-top: 1px solid #e5e0da;
+      background-color: #faf9f6;
+      position: sticky;
+      bottom: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-btn {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #1c1917;
+      padding: 10px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover {
+      background: #1c1917;
+      color: #ffffff;
+      border-color: #1c1917;
+    }
+    .nav-indicator {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      color: #78716c;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-tag">Style Portrait Dossier</div>
+      <div class="header-title">Dark Autumn</div>
+    </header>
+
+    <div class="book">
+      <!-- PAGE 0: COVER -->
+      <div id="p0" class="page active">
+        <div class="cover-page">
+          <div class="cover-sub">Personal Diagnostics</div>
+          <div class="cover-seal"></div>
+          <div class="cover-season">Dark Autumn</div>
+          <div class="cover-sub"></div>
+          <p class="cover-desc">"Your frequency, decoded. Your complete digital Lookbook & Biometrics Portfolio."</p>
+        </div>
+      </div>
+
+      <!-- PAGE 1: CHROMATIC ORIGINS -->
+      <div id="p1" class="page">
+        <div class="section-header">
+          <span class="section-num">Section I</span>
+          <h2 class="section-title">Chromatic Origins</h2>
+        </div>
+        <div class="luxury-card">
+          <span class="card-label">Subcutaneous Undertone</span>
+          <div class="card-value">Warm-Neutral with a rich, golden subcutaneous base. Temperature</div>
+        </div>
+        <div class="luxury-card">
+          <span class="card-label">Contrast Level</span>
+          <div class="card-value">High</div>
+          <div class="progress-bar-container">
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 90%;"></div>
+            </div>
+          </div>
+          <p class="card-desc" style="font-size: 11px; color:#78716c; font-style:italic; margin-top: 8px;">Medium to high contrast. Her naturally dark eyes and structured brows create a striking contrast against her rich, golden-bronze skin. While the artificial lilac hair introduces an intense cool-toned contrast, her native features possess a deep, warm, and highly saturated color profile.</p>
+        </div>
+        <div class="luxury-card">
+          <span class="card-label">Surface Overtone Synergy</span>
+          <p class="card-value" style="font-size: 14px; font-weight: bold; margin-bottom: 8px; font-family: sans-serif;">Surface Overtone: Warm / Golden / Peachy Overtone</p>
+          <p class="card-value" style="font-size: 12px; font-weight: normal; font-style: italic; color: #57534e; font-family: serif;">Your prominent golden-peachy overtone gives you a stunning, sun-kissed radiance. However, when paired with extremely cool fashion shades (like your current purple hair), the overtone can look overly yellow or slightly brassy in contrast. Use a lavender-tinted color-correcting primer or setting powder on the high points of your face to neutralize excess orange tones and harmonize your makeup with cool-toned accessories or hair dye.</p>
+        </div>
+      </div>
+
+      <!-- PAGE 2: THE SPECTRUM MATRIX -->
+      <div id="p2" class="page">
+        <div class="section-header">
+          <span class="section-num">Section II</span>
+          <h2 class="section-title">Spectrum Matrix</h2>
+        </div>
+        <p style="font-size: 10px; text-transform: uppercase; color:#b45309; margin-bottom: 12px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: 0.1em;">The 30 Best Harmonized Colors (Rich tones only)</p>
+        <div class="color-grid" style="margin-bottom: 30px;">
+          
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #000000;"></div>
+        <div class="color-info">
+          <div class="color-name">Soft Black</div>
+          <div class="color-hex">#000000</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #1A1A1A;"></div>
+        <div class="color-info">
+          <div class="color-name">Espresso</div>
+          <div class="color-hex">#1A1A1A</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #36454F;"></div>
+        <div class="color-info">
+          <div class="color-name">Charcoal</div>
+          <div class="color-hex">#36454F</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #2F4F4F;"></div>
+        <div class="color-info">
+          <div class="color-name">Dark Slate Gray</div>
+          <div class="color-hex">#2F4F4F</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #556B2F;"></div>
+        <div class="color-info">
+          <div class="color-name">Dark Olive Green</div>
+          <div class="color-hex">#556B2F</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #6B8E23;"></div>
+        <div class="color-info">
+          <div class="color-name">Olive Drab</div>
+          <div class="color-hex">#6B8E23</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #808000;"></div>
+        <div class="color-info">
+          <div class="color-name">Olive</div>
+          <div class="color-hex">#808000</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #006400;"></div>
+        <div class="color-info">
+          <div class="color-name">Dark Green</div>
+          <div class="color-hex">#006400</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #008000;"></div>
+        <div class="color-info">
+          <div class="color-name">Harvest Green</div>
+          <div class="color-hex">#008000</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #228B22;"></div>
+        <div class="color-info">
+          <div class="color-name">Forest Green</div>
+          <div class="color-hex">#228B22</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #8B4513;"></div>
+        <div class="color-info">
+          <div class="color-name">Saddle Brown</div>
+          <div class="color-hex">#8B4513</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #A0522D;"></div>
+        <div class="color-info">
+          <div class="color-name">Sienna</div>
+          <div class="color-hex">#A0522D</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #D2691E;"></div>
+        <div class="color-info">
+          <div class="color-name">Chocolate</div>
+          <div class="color-hex">#D2691E</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #CD853F;"></div>
+        <div class="color-info">
+          <div class="color-name">Peru</div>
+          <div class="color-hex">#CD853F</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #B8860B;"></div>
+        <div class="color-info">
+          <div class="color-name">Dark Goldenrod</div>
+          <div class="color-hex">#B8860B</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #DAA520;"></div>
+        <div class="color-info">
+          <div class="color-name">Goldenrod</div>
+          <div class="color-hex">#DAA520</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #A52A2A;"></div>
+        <div class="color-info">
+          <div class="color-name">Brown</div>
+          <div class="color-hex">#A52A2A</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #8B0000;"></div>
+        <div class="color-info">
+          <div class="color-name">Dark Red</div>
+          <div class="color-hex">#8B0000</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #800000;"></div>
+        <div class="color-info">
+          <div class="color-name">Maroon</div>
+          <div class="color-hex">#800000</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #990033;"></div>
+        <div class="color-info">
+          <div class="color-name">Deep Wine</div>
+          <div class="color-hex">#990033</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #B22222;"></div>
+        <div class="color-info">
+          <div class="color-name">Fire Brick</div>
+          <div class="color-hex">#B22222</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #DC143C;"></div>
+        <div class="color-info">
+          <div class="color-name">Crimson</div>
+          <div class="color-hex">#DC143C</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #FF4500;"></div>
+        <div class="color-info">
+          <div class="color-name">Orange Red</div>
+          <div class="color-hex">#FF4500</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #FF6347;"></div>
+        <div class="color-info">
+          <div class="color-name">Tomato</div>
+          <div class="color-hex">#FF6347</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #FF7F50;"></div>
+        <div class="color-info">
+          <div class="color-name">Coral</div>
+          <div class="color-hex">#FF7F50</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #D2B48C;"></div>
+        <div class="color-info">
+          <div class="color-name">Tan</div>
+          <div class="color-hex">#D2B48C</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #DEB887;"></div>
+        <div class="color-info">
+          <div class="color-name">Burly Wood</div>
+          <div class="color-hex">#DEB887</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #F4A460;"></div>
+        <div class="color-info">
+          <div class="color-name">Sandy Brown</div>
+          <div class="color-hex">#F4A460</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #F5DEB3;"></div>
+        <div class="color-info">
+          <div class="color-name">Wheat</div>
+          <div class="color-hex">#F5DEB3</div>
+        </div>
+      </div>
+    
+      <div class="color-card">
+        <div class="color-swatch" style="background-color: #FFE4B5;"></div>
+        <div class="color-info">
+          <div class="color-name">Moccasin</div>
+          <div class="color-hex">#FFE4B5</div>
+        </div>
+      </div>
+    
+        </div>
+        <p style="font-size: 10px; text-transform: uppercase; color:#dc2626; margin-bottom: 12px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: 0.1em;">Colors To Avoid</p>
+        <div class="color-grid">
+          
+        <div class="color-card avoid">
+          <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+            <div class="color-swatch" style="background-color: #F0F8FF; font-family: sans-serif;"></div>
+            <div class="color-info" style="flex: 1;">
+              <div class="color-name text-red">Alice Blue</div>
+              <div class="color-hex">#F0F8FF</div>
+            </div>
+          </div>
+          <div class="color-reason">Overpowers delicate features or clashes with warmth.</div>
+        </div>
+      
+        <div class="color-card avoid">
+          <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+            <div class="color-swatch" style="background-color: #F5FFFA; font-family: sans-serif;"></div>
+            <div class="color-info" style="flex: 1;">
+              <div class="color-name text-red">Mint Cream</div>
+              <div class="color-hex">#F5FFFA</div>
+            </div>
+          </div>
+          <div class="color-reason">Overpowers delicate features or clashes with warmth.</div>
+        </div>
+      
+        <div class="color-card avoid">
+          <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+            <div class="color-swatch" style="background-color: #F0FFFF; font-family: sans-serif;"></div>
+            <div class="color-info" style="flex: 1;">
+              <div class="color-name text-red">Azure</div>
+              <div class="color-hex">#F0FFFF</div>
+            </div>
+          </div>
+          <div class="color-reason">Overpowers delicate features or clashes with warmth.</div>
+        </div>
+      
+        <div class="color-card avoid">
+          <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+            <div class="color-swatch" style="background-color: #E0FFFF; font-family: sans-serif;"></div>
+            <div class="color-info" style="flex: 1;">
+              <div class="color-name text-red">Light Cyan</div>
+              <div class="color-hex">#E0FFFF</div>
+            </div>
+          </div>
+          <div class="color-reason">Overpowers delicate features or clashes with warmth.</div>
+        </div>
+      
+        <div class="color-card avoid">
+          <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+            <div class="color-swatch" style="background-color: #AFEEEE; font-family: sans-serif;"></div>
+            <div class="color-info" style="flex: 1;">
+              <div class="color-name text-red">Pale Turquoise</div>
+              <div class="color-hex">#AFEEEE</div>
+            </div>
+          </div>
+          <div class="color-reason">Overpowers delicate features or clashes with warmth.</div>
+        </div>
+      
+        <div class="color-card avoid">
+          <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+            <div class="color-swatch" style="background-color: #ADD8E6; font-family: sans-serif;"></div>
+            <div class="color-info" style="flex: 1;">
+              <div class="color-name text-red">Light Blue</div>
+              <div class="color-hex">#ADD8E6</div>
+            </div>
+          </div>
+          <div class="color-reason">Overpowers delicate features or clashes with warmth.</div>
+        </div>
+      
+        <div class="color-card avoid">
+          <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+            <div class="color-swatch" style="background-color: #87CEEB; font-family: sans-serif;"></div>
+            <div class="color-info" style="flex: 1;">
+              <div class="color-name text-red">Sky Blue</div>
+              <div class="color-hex">#87CEEB</div>
+            </div>
+          </div>
+          <div class="color-reason">Overpowers delicate features or clashes with warmth.</div>
+        </div>
+      
+        <div class="color-card avoid">
+          <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+            <div class="color-swatch" style="background-color: #87CEFA; font-family: sans-serif;"></div>
+            <div class="color-info" style="flex: 1;">
+              <div class="color-name text-red">Light Sky Blue</div>
+              <div class="color-hex">#87CEFA</div>
+            </div>
+          </div>
+          <div class="color-reason">Overpowers delicate features or clashes with warmth.</div>
+        </div>
+      
+        <div class="color-card avoid">
+          <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+            <div class="color-swatch" style="background-color: #B0C4DE; font-family: sans-serif;"></div>
+            <div class="color-info" style="flex: 1;">
+              <div class="color-name text-red">Light Steel Blue</div>
+              <div class="color-hex">#B0C4DE</div>
+            </div>
+          </div>
+          <div class="color-reason">Overpowers delicate features or clashes with warmth.</div>
+        </div>
+      
+        <div class="color-card avoid">
+          <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+            <div class="color-swatch" style="background-color: #E6E6FA; font-family: sans-serif;"></div>
+            <div class="color-info" style="flex: 1;">
+              <div class="color-name text-red">Lavender</div>
+              <div class="color-hex">#E6E6FA</div>
+            </div>
+          </div>
+          <div class="color-reason">Overpowers delicate features or clashes with warmth.</div>
+        </div>
+      
+        </div>
+      </div>
+
+      <!-- PAGE 3: FACIAL TOPOLOGY & HAIRSTYLES -->
+      <div id="p3" class="page">
+        <div class="section-header">
+          <span class="section-num">Section III</span>
+          <h2 class="section-title">Topology & Hair</h2>
+        </div>
+        <div class="luxury-card" style="margin-bottom: 24px;">
+          <span class="card-label">Face Shape Topology</span>
+          <div class="card-value" style="font-size: 1.5rem; color: #b45309; margin-bottom: 6px;">Heart</div>
+          <p style="font-size: 12px; color:#57534e; line-height:1.5;">Your face shape indicates a unique mathematical ratio which pairs elegantly with specific geometric hairstyles and cuts to frame your features optimally.</p>
+        </div>
+        
+      <div class="styles-grid-container">
+        <div class="styles-column">
+          <div class="column-header">Short Length</div>
+          <div class="styles-grid">
+        <div class="style-card">
+          <img class="style-img" src="https://i.pinimg.com/736x/64/de/9d/64de9de1ac03102cef02726de889144e.jpg" alt="Chin-Length Bob (Creates visual width exactly at the narrow jaw)" referrerPolicy="no-referrer" />
+          <div class="style-info">
+            <div class="style-category">Short Style</div>
+            <div class="style-title">Chin-Length Bob (Creates visual width exactly at the narrow jaw)</div>
+          </div>
+        </div>
+      
+        <div class="style-card">
+          <img class="style-img" src="https://i.pinimg.com/736x/41/f1/42/41f1423ea83a06dafe7eadb4d604f5dd.jpg" alt="Pixie with Side-Swept Bangs (Camouflages forehead width)" referrerPolicy="no-referrer" />
+          <div class="style-info">
+            <div class="style-category">Short Style</div>
+            <div class="style-title">Pixie with Side-Swept Bangs (Camouflages forehead width)</div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="styles-column">
+          <div class="column-header">Medium Length</div>
+          <div class="styles-grid">
+        <div class="style-card">
+          <img class="style-img" src="https://i.pinimg.com/736x/ac/2c/e0/ac2ce09d2d4e1cb0f32387e167f4def3.jpg" alt="Inverted Shoulder Bob (Shifts weight lower toward the neck)" referrerPolicy="no-referrer" />
+          <div class="style-info">
+            <div class="style-category">Medium Style</div>
+            <div class="style-title">Inverted Shoulder Bob (Shifts weight lower toward the neck)</div>
+          </div>
+        </div>
+      
+        <div class="style-card">
+          <img class="style-img" src="https://i.pinimg.com/736x/6b/76/1b/6b761b7d6582f7c2aea24eec07e82d1b.jpg" alt="Collarbone Cut with Flip Ends (Adds flare and volume near the chin)" referrerPolicy="no-referrer" />
+          <div class="style-info">
+            <div class="style-category">Medium Style</div>
+            <div class="style-title">Collarbone Cut with Flip Ends (Adds flare and volume near the chin)</div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="styles-column">
+          <div class="column-header">Long Length</div>
+          <div class="styles-grid">
+        <div class="style-card">
+          <img class="style-img" src="https://i.pinimg.com/736x/1f/14/ef/1f14ef1c4481196094678aa920de7e32.jpg" alt="Long Layers with Curls (Waves starting at ear-level fill out the lower face)" referrerPolicy="no-referrer" />
+          <div class="style-info">
+            <div class="style-category">Long Style</div>
+            <div class="style-title">Long Layers with Curls (Waves starting at ear-level fill out the lower face)</div>
+          </div>
+        </div>
+      
+        <div class="style-card">
+          <img class="style-img" src="https://i.pinimg.com/736x/0e/80/a4/0e80a47fa383581e17dc565ae00f853f.jpg" alt="Bardot Bangs with Cascading Waves (Softens the forehead while keeping lower volume)" referrerPolicy="no-referrer" />
+          <div class="style-info">
+            <div class="style-category">Long Style</div>
+            <div class="style-title">Bardot Bangs with Cascading Waves (Softens the forehead while keeping lower volume)</div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    
+      </div>
+
+      <!-- PAGE 4: PRECIOUS HARMONIES -->
+      <div id="p4" class="page">
+        <div class="section-header">
+          <span class="section-num">Section IV</span>
+          <h2 class="section-title">Precious Harmonies</h2>
+        </div>
+        <div class="luxury-card">
+          <span class="card-label">Ideal Jewelry Metals</span>
+          <div class="metals-flex">
+            
+        <div class="metal-swatch-container">
+          <div class="metal-swatch" style="background-color: #D4AF37;"></div>
+          <div class="metal-name">Gold</div>
+          <div class="metal-status">★ Flattering</div>
+        </div>
+      
+        <div class="metal-swatch-container">
+          <div class="metal-swatch" style="background-color: #CD7F32;"></div>
+          <div class="metal-name">Bronze</div>
+          <div class="metal-status">★ Flattering</div>
+        </div>
+      
+        <div class="metal-swatch-container">
+          <div class="metal-swatch" style="background-color: #B87333;"></div>
+          <div class="metal-name">Copper</div>
+          <div class="metal-status">★ Flattering</div>
+        </div>
+      
+          </div>
+        </div>
+        <div class="luxury-card">
+          <span class="card-label">Dimensional Hair Guidelines</span>
+          <div class="hair-grid" style="margin-top: 10px;">
+            
+      <div class="hair-swatch-container">
+        <div class="hair-swatch" style="background-color: #1E110B;"></div>
+        <div class="hair-name">Dark Chocolate Espresso</div>
+        <div class="hair-hex">#1E110B</div>
+      </div>
+    
+      <div class="hair-swatch-container">
+        <div class="hair-swatch" style="background-color: #6E2C1B;"></div>
+        <div class="hair-name">Spiced Auburn Lowlights</div>
+        <div class="hair-hex">#6E2C1B</div>
+      </div>
+    
+      <div class="hair-swatch-container">
+        <div class="hair-swatch" style="background-color: #9E7035;"></div>
+        <div class="hair-name">Warm Honey Balayage</div>
+        <div class="hair-hex">#9E7035</div>
+      </div>
+    
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGE 5: BIOMETRIC PROTOCOLS -->
+      <div id="p5" class="page">
+        <div class="section-header">
+          <span class="section-num">Section V</span>
+          <h2 class="section-title">Field Diagnostics</h2>
+        </div>
+        <div class="luxury-card">
+          <span class="card-label">Munsell Profile</span>
+          <p class="card-value" style="font-size:13px; font-weight:normal; font-family: sans-serif; color: #1c1917;">Medium chroma, warm hue, dark value. Borrows depth from Winter.</p>
+        </div>
+        <div class="luxury-card">
+          <span class="card-label">Ocular Spectrum</span>
+          <p class="card-value" style="font-size:13px; font-weight:normal; font-family: sans-serif; color: #1c1917;">Deep warm brown, dark hazel, dark amber, deep olive — rich and dark</p>
+        </div>
+        <div class="luxury-card">
+          <span class="card-label">Eyewear Guideline</span>
+          <p class="card-value" style="font-size:13px; font-weight:normal; font-family: sans-serif; color: #1c1917;">Dark tortoiseshell, deep brown, warm dark amber, bronze frames</p>
+        </div>
+        <div class="luxury-card">
+          <span class="card-label">Adjacent Sister Flow Connection</span>
+          <p class="card-value" style="font-size:13px; font-weight:normal; font-family: sans-serif; color: #1c1917;">Flows with <strong>dark_winter</strong>. Because your primary characteristic is depth, you flow directly into Dark Winter. This sister season alignment allows you to borrow deep, dramatic cool colors like rich plum, charcoal, and dark emerald. To make these cool tones work seamlessly, ensure you maintain your warm golden base with bronzer and choose lip colors with a neutral-to-warm undertone.</p>
+        </div>
+        <div class="luxury-card">
+          <span class="card-label">Fabric Tactility Notes</span>
+          <p class="card-value" style="font-size:13px; font-weight:normal; font-family: sans-serif; color: #1c1917;">Rich, luxurious fabrics — leather, velvet, wool in deep warm tones. Natural earth tones.</p>
+        </div>
+      </div>
+
+      <!-- PAGE 6: COSMETICS & DIRECTIVE -->
+      <div id="p6" class="page">
+        <div class="section-header">
+          <span class="section-num">Section VI</span>
+          <h2 class="section-title">Makeup & Protocol</h2>
+        </div>
+        <div class="luxury-card">
+          <span class="card-label">Cosmetics Guidelines</span>
+          <div class="makeup-row">
+            <div class="makeup-column">
+              <div style="font-size:9x; font-weight:700; color:#78716c; text-transform: uppercase; margin-bottom:8px; letter-spacing: 0.1em; border-b: 1px solid #cbd5e1; padding-bottom: 4px;">Lips</div>
+              <div class="makeup-grid">
+      <div class="makeup-item">
+        <div class="makeup-swatch" style="background-color: #B35237;"></div>
+        <span class="makeup-name">Spiced Terracotta</span>
+      </div>
+    
+      <div class="makeup-item">
+        <div class="makeup-swatch" style="background-color: #7B3F31;"></div>
+        <span class="makeup-name">Rich Maple Gloss</span>
+      </div>
+    
+      <div class="makeup-item">
+        <div class="makeup-swatch" style="background-color: #631F1D;"></div>
+        <span class="makeup-name">Mulled Wine Satin</span>
+      </div>
+    </div>
+            </div>
+            <div class="makeup-column">
+              <div style="font-size:9px; font-weight:700; color:#78716c; text-transform: uppercase; margin-bottom:8px; letter-spacing: 0.1em; border-b: 1px solid #cbd5e1; padding-bottom: 4px;">Blush</div>
+              <div class="makeup-grid">
+      <div class="makeup-item">
+        <div class="makeup-swatch" style="background-color: #FADADD;"></div>
+        <span class="makeup-name">Deep Terracotta</span>
+      </div>
+    
+      <div class="makeup-item">
+        <div class="makeup-swatch" style="background-color: #E75480;"></div>
+        <span class="makeup-name">Warm Brick</span>
+      </div>
+    
+      <div class="makeup-item">
+        <div class="makeup-swatch" style="background-color: #DDA0DD;"></div>
+        <span class="makeup-name">Dark Plum</span>
+      </div>
+    </div>
+            </div>
+            <div class="makeup-column">
+              <div style="font-size:9px; font-weight:700; color:#78716c; text-transform: uppercase; margin-bottom:8px; letter-spacing: 0.1em; border-b: 1px solid #cbd5e1; padding-bottom: 4px;">Nails</div>
+              <div class="makeup-grid">
+      <div class="makeup-item">
+        <div class="makeup-swatch" style="background-color: #8A6623;"></div>
+        <span class="makeup-name">Gilded Bronze</span>
+      </div>
+    
+      <div class="makeup-item">
+        <div class="makeup-swatch" style="background-color: #3E2723;"></div>
+        <span class="makeup-name">Spiced Espresso</span>
+      </div>
+    
+      <div class="makeup-item">
+        <div class="makeup-swatch" style="background-color: #3F4E2B;"></div>
+        <span class="makeup-name">Deep Olive Creme</span>
+      </div>
+    </div>
+            </div>
+          </div>
+          <div class="foundation-label">Ideal Base: Warm Glow</div>
+        </div>
+        <div class="directive-card">
+          <span class="card-label">Master Stylist Directive Advice</span>
+          <div class="directive-text">"Warm, deep, dark."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Prev</button>
+      <div class="nav-indicator" id="pageIndicator">Page 1 of 7</div>
+      <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+    </div>
+  </div>
+
+  <script>
+    let currentPage = 0;
+    const totalPages = 7;
+    
+    function changePage(dir) {
+      document.getElementById('p' + currentPage).classList.remove('active');
+      currentPage = (currentPage + dir + totalPages) % totalPages;
+      document.getElementById('p' + currentPage).classList.add('active');
+      document.getElementById('pageIndicator').innerText = 'Page ' + (currentPage + 1) + ' of ' + totalPages;
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>
